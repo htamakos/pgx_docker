@@ -1,0 +1,7 @@
+version: '2'
+services:
+  pgx_server:
+    image: pgx:latest
+    ports:
+      - 7007:7007
+
