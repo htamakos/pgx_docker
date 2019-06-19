@@ -16,6 +16,12 @@ ADD ./conf/server.conf /opt/oracle/pgx-server/conf/server.conf
 ADD ./conf/pgx.conf /opt/oracle/pgx-server/conf/pgx.conf 
 RUN mkdir -p /opt/oracle/pgx-server/working_dir
 
+ARG groovy_version="2.5.6"
+RUN wget https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-$groovy_version.zip -O groovy.zip && \
+    unzip groovy.zip -d /opt/ && \
+    rm groovy.zip 
+ENV GROOVY_HOME=/opt/groovy-$groovy_version
+
 EXPOSE 7007
 CMD ["sh", "/opt/oracle/pgx-server/bin/start-server"]
 
